@@ -27,12 +27,14 @@ The `POST` request to the (mock) backend has a few required values and some opti
   yearlyYield?: number; // options, required when user chooses hasSolarPanels: true
 ```
 
+The image below is located in the root of the project named `image.png`, if you would like to enlarge the image when copying the styles. If you would like to see the working application, head over to https://configurator.soly.nl/energie.
 ![alt text](image.png)
 
 ## Technical requirements
 
 - Use the Angular Reactive Forms to create the forms that are located in the template
 - Split up the HTML in (bite sized) components, for better readability
+- Use TailwindCSS for styling the elements. If you're completely unfamiliar with TailwindCSS, it's also okay to fallback on SCSS.
 
 ## Conditions
 
@@ -50,6 +52,8 @@ Here are some tips to look out for when you're working on this assessment:
 ## Project
 
 This project uses the Nx Monorepo structure, for an easy and accessible coding experience.
+
+We used node version `20.11.0` for setting up the environment, with the latest versions of Angular and TailwindCSS.
 
 ## Setup
 
