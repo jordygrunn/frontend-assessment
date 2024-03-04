@@ -45,7 +45,7 @@ Here are some tips to look out for when you're working on this assessment:
 
 - Try to make sure you don't repeat yourself with coding (DRY method)
 - Make good use of Typescript, so the code gets more readable for other developers
-- If you have some prior knowledge with RxJS, Testing or something else, show it in the assessment!
+- If you've got some time left still and have some prior knowledge with RxJS, Testing or something else, definitely show it in the assessment!
 
 ## Project
 
