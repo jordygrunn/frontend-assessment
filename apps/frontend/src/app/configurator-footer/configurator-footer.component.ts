@@ -24,8 +24,4 @@ export class ConfiguratorFooterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.configuratorPriceSubscription.unsubscribe();
   }
-
-  processConfiguratorPrice() {
-    this.configuratorPrice = this.configuratorService.getMonthlyPrice().toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
-  }
 }
