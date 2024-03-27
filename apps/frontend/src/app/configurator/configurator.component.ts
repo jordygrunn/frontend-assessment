@@ -14,7 +14,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ConfiguratorComponent {
   configuratorService = inject(ConfiguratorService);
-  monthlyPrice = 0;
 
   constructor() {
     this.checkIfGasUsageIsRequired();

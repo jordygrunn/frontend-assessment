@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ConfiguratorComponent } from './configurator/configurator.component';
-
 @Injectable({
   providedIn: 'root'
 })
 export class ConfiguratorService {
   configuratorComponent: ConfiguratorComponent | undefined;
+  private monthlyPriceSubject = new BehaviorSubject<number>(0);
   monthlyPrice = 0;
   url = 'http://localhost:3000/api/calculate';
 
@@ -29,6 +30,14 @@ export class ConfiguratorService {
     return responseData?.data?.monthlyPrice;
   }
 
+  setMonthlyPrice(price: number) {
+    this.monthlyPriceSubject.next(price);
+  }
+
+  getMonthlyPriceObservable() {
+    return this.monthlyPriceSubject.asObservable();
+  }
+
   getMonthlyPrice() {
     return this.monthlyPrice;
   }
@@ -40,7 +49,7 @@ export class ConfiguratorService {
         console.log(JSON.stringify(data));
         console.log(data);
         if (data) {
-          this.monthlyPrice = Number(data);
+          this.setMonthlyPrice(Number(data))
         } else {
           console.error('Fout bij het ontvangen van maandelijkse prijsgegevens');
         }
