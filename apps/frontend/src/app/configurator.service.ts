@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ConfiguratorComponent } from './configurator/configurator.component';
-import { ConfiguratorFooterComponent } from './configurator-footer/configurator-footer.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfiguratorService {
-  configuratorFooterComponent: ConfiguratorFooterComponent | undefined;
+  configuratorComponent: ConfiguratorComponent | undefined;
   url = 'http://localhost:3000/api/calculate';
 
   async getConfiguratorPrice(contractType: string, hasSolarPanels: boolean, energyUsage: number, gasUsage: number, yearlyYield: number): Promise<ConfiguratorComponent | undefined> {
@@ -31,8 +30,7 @@ export class ConfiguratorService {
   submitConfiguratorForm(contractType: string, hasSolarPanels: boolean, energyUsage: number, gasUsage: number, yearlyYield: number) {
     console.log(contractType, hasSolarPanels, energyUsage, gasUsage, yearlyYield);
     this.getConfiguratorPrice(contractType, hasSolarPanels, energyUsage, gasUsage, yearlyYield).then(data => {
-      this.configuratorFooterComponent?.processConfiguratorPrice(100);
+      // this.monthlyPrice = data!.monthlyPrice;
     });
-
   }
 }

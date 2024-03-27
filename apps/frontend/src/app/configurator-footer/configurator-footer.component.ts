@@ -10,8 +10,12 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 })
 export class ConfiguratorFooterComponent {
-  constructor() {
-    console.log('Configurator footer');
-  }
+  configuratorPrice = '';
 
+  constructor() {
+    this.processConfiguratorPrice(102.31);
+  }
+  processConfiguratorPrice(price: number) {
+    this.configuratorPrice = price.toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+  }
 }

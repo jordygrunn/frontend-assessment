@@ -2,11 +2,11 @@
   <div class="flex w-full items-center flex-row">
     <div class="flex flex-col">
       <h4 class="mb-1 font-bold">Amount</h4>
-      <h3 class="text-3xl font-bold"> 0,00 <span class="text-base font-light">/ per month</span></h3>
+      <h3 class="text-3xl font-bold"> {{ configuratorPrice }} <span class="text-base font-light">/ per month</span></h3>
     </div>
   </div>
 
-  <button class="inline-block flex p-5 items-center justify-center rounded-full font-semibold tracking-wide bg-primary-400 active:ring-3 hover:bg-primary-300 active:ring-primary-400/60 active:bg-primary-400 whitespace-nowrap">
+  <button type="submit" form="configuratorForm" class="inline-block flex p-5 items-center justify-center rounded-full font-semibold tracking-wide bg-primary-400 active:ring-3 hover:bg-primary-300 active:ring-primary-400/60 active:bg-primary-400 whitespace-nowrap">
     Calculate amount
   </button>
 </div>

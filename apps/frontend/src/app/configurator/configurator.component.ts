@@ -14,6 +14,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class ConfiguratorComponent {
   configuratorService = inject(ConfiguratorService);
+  monthlyPrice = 0;
 
   constructor() {
     this.checkIfGasUsageIsRequired();
@@ -55,8 +56,6 @@ export class ConfiguratorComponent {
     });
   }
 
-
-
   submitConfiguratorForm() {
     this.configuratorService.submitConfiguratorForm(
       this.applyForm.value.contractType ?? 'ENERGY',
@@ -66,5 +65,4 @@ export class ConfiguratorComponent {
       this.applyForm.value.yearlyYield ?? 0
     );
   }
-
 }

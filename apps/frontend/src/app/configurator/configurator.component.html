@@ -67,7 +67,6 @@
 
         <input id="yearly-yield-input" class="border border-2 border-primary-400 h-12 w-full rounded-lg" formControlName="yearlyYield"  />
 
-
         @if (!applyForm.valid){
           @if (applyForm.controls.yearlyYield.errors?.['required']){
             <p class="text-red-600">'Yearly yield' is required.</p>
