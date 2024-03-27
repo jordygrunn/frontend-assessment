@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { ConfiguratorService } from '../configurator.service';
 
 @Component({
   selector: 'app-configurator-footer',
@@ -12,10 +13,11 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 export class ConfiguratorFooterComponent {
   configuratorPrice = '';
 
-  constructor() {
-    this.processConfiguratorPrice(102.31);
+  constructor(private configuratorService: ConfiguratorService) {
+    this.processConfiguratorPrice();
   }
-  processConfiguratorPrice(price: number) {
-    this.configuratorPrice = price.toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+
+  processConfiguratorPrice() {
+    this.configuratorPrice = this.configuratorService.getMonthlyPrice().toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
   }
 }

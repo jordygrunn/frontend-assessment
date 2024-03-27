@@ -6,6 +6,7 @@ import { ConfiguratorComponent } from './configurator/configurator.component';
 })
 export class ConfiguratorService {
   configuratorComponent: ConfiguratorComponent | undefined;
+  monthlyPrice = 0;
   url = 'http://localhost:3000/api/calculate';
 
   async getConfiguratorPrice(contractType: string, hasSolarPanels: boolean, energyUsage: number, gasUsage: number, yearlyYield: number): Promise<ConfiguratorComponent | undefined> {
@@ -24,13 +25,28 @@ export class ConfiguratorService {
       })
     });
 
-    return await data.json() ?? {};
+    const responseData = await data.json();
+    return responseData?.data?.monthlyPrice;
+  }
+
+  getMonthlyPrice() {
+    return this.monthlyPrice;
   }
 
   submitConfiguratorForm(contractType: string, hasSolarPanels: boolean, energyUsage: number, gasUsage: number, yearlyYield: number) {
     console.log(contractType, hasSolarPanels, energyUsage, gasUsage, yearlyYield);
-    this.getConfiguratorPrice(contractType, hasSolarPanels, energyUsage, gasUsage, yearlyYield).then(data => {
-      // this.monthlyPrice = data!.monthlyPrice;
-    });
+    this.getConfiguratorPrice(contractType, hasSolarPanels, energyUsage, gasUsage, yearlyYield)
+      .then(data => {
+        console.log(JSON.stringify(data));
+        console.log(data);
+        if (data) {
+          this.monthlyPrice = Number(data);
+        } else {
+          console.error('Fout bij het ontvangen van maandelijkse prijsgegevens');
+        }
+      })
+      .catch(error => {
+        console.error('Fout bij het ophalen van configuratorprijs:', error);
+      });
   }
 }
