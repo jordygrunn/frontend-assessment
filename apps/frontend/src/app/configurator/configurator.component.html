@@ -2,23 +2,24 @@
   <div class="h-[calc(100%-6rem)] pt-10 md:pt-8">
     <app-configurator-header></app-configurator-header>
 
-    <div class="flex h-[calc(100%-6rem)] flex-col overflow-y-auto px-4 pb-16 text-left md:px-10">
+    <form [formGroup]="applyForm" (submit)="submitConfiguratorForm()" id="configuratorForm" class="flex h-[calc(100%-6rem)] flex-col overflow-y-auto px-4 pb-16 text-left md:px-10">
       <h2 class="font-semibold text-xl mb-3">Energy usage</h2>
 
       <div class="flex flex-col w-full mb-3">
-        <label for="contract-type-input" class="font-semibold mb-1"
-        >Contract type</label
-        >
-        <select name="contract-type" id="contract-type-input">
-          <option value="electricity">Electricity</option>
-          <option value="gas">Gas</option>
-          <option value="both">Both</option>
+        <label for="contract-type-input" class="font-semibold mb-1">
+          Contract type
+        </label>
+
+        <select name="contract-type" id="contract-type-input"
+                class="border border-2 border-primary-400 h-12 w-full rounded-lg" formControlName="contractType">
+          <option value="ENERGY">Electricity</option>
+          <option value="BOTH">Electricity and gas</option>
         </select>
       </div>
 
       <div class="flex flex-col w-full">
         <label for="has-solar-panels-input" class="font-semibold mb-1">
-          <input id="has-solar-panels-input" type="checkbox" />
+          <input id="has-solar-panels-input" type="checkbox" formControlName="hasSolarPanels" />
           I have solar panels
         </label>
       </div>
@@ -26,33 +27,57 @@
       <hr class="border bg-gray-200 my-6" />
 
       <div class="flex flex-col w-full mb-3">
-        <label for="energy-usage-input" class="font-semibold mb-1"
-        >Energy usage</label
-        >
-        <input
-          id="energy-usage-input"
-          class="border border-2 border-primary-400 h-12 w-full rounded-lg"
-        />
+        <label for="energy-usage-input" class="font-semibold mb-1">
+          Energy usage
+        </label>
+
+        <input id="energy-usage-input" class="border border-2 border-primary-400 h-12 w-full rounded-lg" formControlName="energyUsage"/>
+
+        @if (!applyForm.valid){
+          @if (applyForm.controls.energyUsage.errors?.['required']){
+            <p class="text-red-600">'Energy usage' is required.</p>
+          }
+          @if (applyForm.controls.energyUsage.errors?.['pattern']){
+            <p class="text-red-600">Must be a number</p>
+          }
+        }
       </div>
 
-      <div class="flex flex-col w-full mb-3">
-        <label for="gas-usage-input" class="font-semibold mb-1">Gas usage</label>
-        <input
-          id="gas-usage-input"
-          class="border border-2 border-primary-400 h-12 w-full rounded-lg"
-        />
+      <div class="flex flex-col w-full mb-3" *ngIf="applyForm.get('contractType')?.value === 'BOTH'">
+        <label for="gas-usage-input" class="font-semibold mb-1">
+          Gas usage
+        </label>
+
+        <input id="gas-usage-input" class="border border-2 border-primary-400 h-12 w-full rounded-lg" formControlName="gasUsage" />
+
+        @if (!applyForm.valid){
+          @if (applyForm.controls.gasUsage.errors?.['required']){
+            <p class="text-red-600">'Gas usage' is required.</p>
+          }
+          @if (applyForm.controls.gasUsage.errors?.['pattern']){
+            <p class="text-red-600">Must be a number</p>
+          }
+        }
       </div>
 
-      <div class="flex flex-col w-full mb-3">
-        <label for="yearly-yield-input" class="font-semibold mb-1"
-        >Yearly yield in kWh</label
-        >
-        <input
-          id="yearly-yield-input"
-          class="border border-2 border-primary-400 h-12 w-full rounded-lg"
-        />
+      <div class="flex flex-col w-full mb-3" *ngIf="applyForm.get('hasSolarPanels')?.value">
+        <label for="yearly-yield-input" class="font-semibold mb-1">
+          Yearly yield in kWh
+        </label>
+
+        <input id="yearly-yield-input" class="border border-2 border-primary-400 h-12 w-full rounded-lg" formControlName="yearlyYield"  />
+
+
+        @if (!applyForm.valid){
+          @if (applyForm.controls.yearlyYield.errors?.['required']){
+            <p class="text-red-600">'Yearly yield' is required.</p>
+          }
+          @if (applyForm.controls.yearlyYield.errors?.['pattern']){
+            <p class="text-red-600">Must be a number</p>
+          }
+        }
       </div>
-    </div>
+    </form>
 
     <app-configurator-footer></app-configurator-footer>
   </div>

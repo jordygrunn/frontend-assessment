@@ -11,8 +11,4 @@ import { ConfiguratorComponent } from '../configurator/configurator.component';
 
 })
 export class HomeComponent {
-  constructor() {
-    console.log('Home');
-  }
-
 }
