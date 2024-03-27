@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { ConfiguratorComponent } from '../configurator/configurator.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage, ConfiguratorComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 

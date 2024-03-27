@@ -1,15 +1,12 @@
 <section>
-  <img alt="Background image" class="absolute -z-[1] hidden w-full object-cover md:inset-0 md:h-[50vh] lg:block lg:h-full" src="https://enie.nl.cdn.enie.dev/configurator/assets/img/2302_Soly_Zwolle_Klant%20in%20Zicht%20_%20Bart%20Lindenhovius_LR_2.jpg">
-
+  <img alt="Background image" class="absolute -z-[1] hidden w-full object-cover md:inset-0 md:h-[50vh] lg:block lg:h-full"
+       src="../../assets/background.jpg">
 
   <div class="fixed inset-0 z-10 flex h-full w-screen md:bg-contain md:bg-top md:bg-no-repeat md:p-8 lg:bg-cover lg:bg-center lg:p-4">
     <div class="lg:max-h-3xl relative z-10 w-full flex-col overflow-hidden md:mt-auto md:h-[calc(100%-160px)] md:overflow-visible md:drop-shadow-xl lg:my-auto lg:ml-auto lg:h-full lg:max-w-3xl lg:items-center">
-      <div class="md:rounded-4xl h-full w-full overflow-hidden bg-gray-100">
-        Configurator
-      </div>
+        <app-configurator></app-configurator>
     </div>
   </div>
-
 
   <div class="absolute bottom-0 z-0 hidden h-[calc(100%-200px)] w-full bg-white md:block lg:hidden" style="background: rgb(255, 255, 255); background: linear-gradient(
         0deg,
@@ -17,5 +14,6 @@
         rgba(255, 255, 255, 1) 75%,
         rgba(255, 255, 255, 0) 100%
       );"></div>
-  <img alt="Soly watermark" src="../../assets/soly-watermark.png" class="invisible fixed -bottom-28 -left-36 h-96 w-96 lg:visible">
+  <img alt="Soly watermark" ngSrc="../../assets/soly-watermark.png" class="invisible fixed -bottom-28 -left-36 h-96 w-96 lg:visible"
+       height="400" width="400">
 </section>
